@@ -11,6 +11,47 @@ UserPost
 """
 
 
+# Добавление нового поста
+def add_post_db(user_id, main_text, hashtag):
+    db = next(get_db())
+    new_post = UserPost(user_id=user_id, main_text=main_text, hashtag=hashtag)
+
+    db.add(new_post)
+    db.commit()
+    return True
+
+
+# Получение всех постов, либо одного
+def get_all_or_exact_post(post_id=0):
+    db = next(get_db())
+    if post_id:
+        all_post = db.query(UserPost).filter_by(id=post_id).first()
+        if all_post:
+            return all_post
+        return False
+    return db.query(UserPost).all()
+
+
+# Удаление поста
+def delete_post_db(post_id):
+    db = next(get_db())
+    to_delete_post = db.query(UserPost).filter_by(id=post_id).first()
+    if to_delete_post:
+        db.delete(to_delete_post)
+        db.commit()
+        return True
+    return False
+
+
+def update_post_db(post_id, new_text):
+    db = next(get_db())
+    update_post = db.query(UserPost).filter_by(id=post_id).first()
+    if update_post:
+        update_post.main_text = new_text
+        db.commit()
+        return True
+    return False
+
 
 
 """
@@ -116,7 +157,7 @@ def delete_hashtag_db(hashtag_id):
 # Добавление фото
 def add_photo_db(post_id, photo_file):
     db = next(get_db())
-    new_photo = PostPhoto(post_id=post_id, file=photo_file)
+    new_photo = PostPhoto(post_id=post_id, photo_file=photo_file)
 
     db.add(new_photo)
     db.commit()

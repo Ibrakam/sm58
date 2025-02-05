@@ -1,40 +1,9 @@
-"""
-User:
-id
-username
-name
-surname
-birthday
-user_city
-password
-email
+from fastapi import FastAPI
+from api.photos import photo_router
+from db import Base, engine
+# Для создания бд
+Base.metadata.create_all(engine)
 
-UserPost:
-id
-user_id
-main_text
-hashtag
-reg_date
+app = FastAPI(docs_url="/")
 
-PostPhoto:
-id
-post_id
-photo_file
-reg_date
-
-Comment:
-id
-user_id
-post_id
-text
-reg_date
-
-
-Hashtag:
-id
-hashtag_text
-reg_date
-
-
-"""
-
+app.include_router(photo_router)
