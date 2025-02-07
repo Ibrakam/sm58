@@ -16,6 +16,7 @@ class UserCreate(BaseModel):
     city: str = None
 
 
+
 @user_router.post("/add_user")
 async def add_user(user_data: UserCreate):
     user_dict = dict(user_data)

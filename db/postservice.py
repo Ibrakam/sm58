@@ -125,7 +125,7 @@ Hashtag
 # Добавление хэштега
 def add_hashtag_db(hashtag_text):
     db = next(get_db())
-    new_hashtag = Hashtag(text=hashtag_text)
+    new_hashtag = Hashtag(hashtag_text=hashtag_text)
 
     db.add(new_hashtag)
     db.commit()
