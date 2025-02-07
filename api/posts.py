@@ -31,3 +31,5 @@ async def delete_post(post_id: int):
 async def update_post(post_id: int, new_text: str):
     result = update_post(post_id, new_text)
     return result_message(result)
+
+
