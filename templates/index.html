@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .post-container {
+            width: 500px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .username {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .reg-date {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .main-text {
+            font-size: 16px;
+            color: #444;
+            margin: 15px 0;
+        }
+
+        .hashtag {
+            font-size: 14px;
+            color: #0073e6;
+            background-color: #e6f7ff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="post-container">
+        <div class="post-header">
+            <span class="username">{{user_post.user_fk.username}}</span>
+            <span class="reg-date">{{user_post.reg_date.strftime('%d.%m.%Y %H:%M')}}</span>
+        </div>
+
+        <div class="main-text">
+            {{ user_post.main_text }}
+        </div>
+
+        <div class="hashtag">#{{user_post.hashtag}}</div>
+    </div>
+
+</body>
+</html>
