@@ -29,4 +29,7 @@ async def main(request: Request, post_id: int):
     return templates.TemplateResponse(name="index.html", request=request,
                                       context={"user_post": user_post})
 
-# pip install jinja2
+
+@app.get("/registration", response_class=HTMLResponse)
+async def register(request: Request):
+    return templates.TemplateResponse(name="register.html", request=request)
